@@ -63,7 +63,7 @@ function records (_, { month, type, accountsIds, categoriesIds }, ctx, info) {
 	if(month){
 		const date = moment(month, 'MM-YYYY')
 
-		if(!date.isValid()) throw new Error('month param - Invalid date!')
+		if(!date.isValid()) throw new Error('Invalid date!')
 
 		const startDate = date.startOf('month').toISOString()
 		const endDate = date.endOf('month').toISOString()

@@ -68,12 +68,12 @@ async function login (_, {email, password}, ctx, info){
 	const user = await ctx.db.query.user({where: {email}})
 
 	if (!user) {
-		throw new Error('1 Invalid credentials!')
+		throw new Error('Invalid credentials!')
 	}
 
 	const valid = await bcrypt.compare(password, user.password)
 	if (!valid) {
-		throw new Error('2 Invalid credentials!')
+		throw new Error('Invalid credentials!')
 	}
 
 	const token = jwt.sign({ userId: user.id }, JWT_SECRET, {expiresIn: '2h'})
